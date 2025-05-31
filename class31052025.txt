@@ -1,0 +1,15 @@
+Agenticc AI (Autonomuse decision making.)
+LLM (ak demagh hy)
+openai-agents sdk (its a framwork)
+swarm (old framwork)
+uv (package manager) best practice for download from uv official website
+poershall (to download important packages as global)
+name guard ()
+
+agent level
+run level
+global level
+
+Runner.run
+Runner.run_sync
+Runner.run_streamed
