@@ -1,3 +1,5 @@
+# Powered Chatbot using Gemini API
+# This code uses the Gemini API to create a chatbot that can answer questions.
 from dotenv import load_dotenv
 import os
 from agents import Agent, Runner, AsyncOpenAI, OpenAIChatCompletionsModel, RunConfig
