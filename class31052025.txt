@@ -3,8 +3,13 @@ LLM (ak demagh hy)
 openai-agents sdk (its a framwork)
 swarm (old framwork)
 uv (package manager) best practice for download from uv official website
+<<<<<<< HEAD
 powershall (to download important packages as global)
 railguard ()
+=======
+powershell (to download important packages as global)
+name guard ()
+>>>>>>> 1d572fb4a716ebece9c6472cdc2cd37dca7f10e8
 
 agent level
 run level
