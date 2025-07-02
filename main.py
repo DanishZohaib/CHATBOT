@@ -3,6 +3,7 @@
 from dotenv import load_dotenv
 import os
 from agents import Agent, Runner, AsyncOpenAI, OpenAIChatCompletionsModel, RunConfig
+import chainlit as cl
 
 load_dotenv()
 gemini_api_key = os.getenv("GEMINI_API_KEY")
@@ -10,7 +11,6 @@ gemini_api_key = os.getenv("GEMINI_API_KEY")
 if not gemini_api_key:
     raise ValueError("GEMINI_API_KEY is not set. Please ensure it is defined in your .env file.")
 
-#Reference: https://ai.google.dev/gemini-api/docs/openai
 external_client = AsyncOpenAI(
     api_key=gemini_api_key,
     base_url="https://generativelanguage.googleapis.com/v1beta/openai/",
@@ -27,18 +27,16 @@ config = RunConfig(
     tracing_disabled=True
 )
 
-if not gemini_api_key:
-    raise ValueError("GEMINI_API_KEY is not set in the environment variables.")
-
 agent = Agent(
-    name="My Chatbot",
+    name="My Chatbot Danish",
     instructions ="An agent that uses Gemini API to answer questions."
 )
 
 
-response = Runner.run_sync(
-    agent,  
-    input = "What is the capital of Pakistan?",
-    run_config = config
-    )
-print(response)
+# Chainlit integration
+@cl.on_message
+async def handle_message(message: cl.Message):
+    run_result = await Runner.run(agent, input=message.content, run_config=config)
+    final_response = run_result.final_output
+    await cl.Message(content=final_response).send()
+# print(response)
